@@ -47,7 +47,6 @@
 #include "3gpp_33.401.h"
 #include "3gpp_36.401.h"
 #include "security_types.h"
-#include "common_dim.h"
 #include "3gpp_24.008.h"
 
 //------------------------------------------------------------------------------

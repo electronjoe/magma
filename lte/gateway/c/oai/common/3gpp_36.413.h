@@ -138,11 +138,9 @@ typedef struct e_rab_to_be_switched_in_downlink_list_s {
   e_rab_switched_in_downlink_item_t item[MAX_NO_OF_E_RABS];
 } e_rab_to_be_switched_in_downlink_list_t;
 
-#include "S1ap_Cause.h"
-
 typedef struct e_rab_item_s {
   e_rab_id_t e_rab_id;
-  S1ap_Cause_t cause;
+  //S1ap_Cause_t cause;
 } e_rab_item_t;
 
 typedef struct e_rab_list_s {

@@ -47,8 +47,8 @@
 #include "shared_ts_log.h"
 #include "assertions.h"
 #include "dynamic_memory_check.h"
-#include "intertask_interface_types.h"
-#include "itti_types.h"
+//#include "intertask_interface_types.h"
+//#include "itti_types.h"
 
 //-------------------------------
 #define LOG_MAX_QUEUE_ELEMENTS 2048

@@ -206,7 +206,7 @@ typedef struct itti_s1ap_ue_context_release_req_s {
   enb_ue_s1ap_id_t enb_ue_s1ap_id : 24;
   uint32_t enb_id;
   enum s1cause relCause;
-  S1ap_Cause_t cause;
+  //S1ap_Cause_t cause;
 } itti_s1ap_ue_context_release_req_t;
 
 typedef struct itti_s1ap_dl_nas_data_req_s {

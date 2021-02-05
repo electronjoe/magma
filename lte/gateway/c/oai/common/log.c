@@ -59,7 +59,6 @@
 #include "shared_ts_log.h"
 #include "assertions.h"
 #include "dynamic_memory_check.h"
-#include "asn_system.h"
 #include "hashtable.h"
 #include "intertask_interface_types.h"
 #include "itti_types.h"

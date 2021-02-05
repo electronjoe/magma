@@ -27,15 +27,26 @@
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of the FreeBSD Project.
  */
-
-/*! \file common_dim.h
+/*! \file gtpv1_u_messages_def.h
   \brief
-  \author Sebastien ROUX, Lionel Gauthier
+  \author Lionel Gauthier
   \company Eurecom
   \email: lionel.gauthier@eurecom.fr
 */
 
-#ifndef FILE_COMMON_DIM_SEEN
-#define FILE_COMMON_DIM_SEEN
+#include "gtpv1_u_messages_types.h"
 
-#endif /* FILE_COMMON_DIM_SEEN */
+MESSAGE_DEF(
+    GTPV1U_CREATE_TUNNEL_REQ, Gtpv1uCreateTunnelReq, gtpv1uCreateTunnelReq)
+MESSAGE_DEF(
+    GTPV1U_CREATE_TUNNEL_RESP, Gtpv1uCreateTunnelResp, gtpv1uCreateTunnelResp)
+MESSAGE_DEF(
+    GTPV1U_UPDATE_TUNNEL_REQ, Gtpv1uUpdateTunnelReq, gtpv1uUpdateTunnelReq)
+MESSAGE_DEF(
+    GTPV1U_UPDATE_TUNNEL_RESP, Gtpv1uUpdateTunnelResp, gtpv1uUpdateTunnelResp)
+MESSAGE_DEF(
+    GTPV1U_DELETE_TUNNEL_REQ, Gtpv1uDeleteTunnelReq, gtpv1uDeleteTunnelReq)
+MESSAGE_DEF(
+    GTPV1U_DELETE_TUNNEL_RESP, Gtpv1uDeleteTunnelResp, gtpv1uDeleteTunnelResp)
+MESSAGE_DEF(GTPV1U_TUNNEL_DATA_IND, Gtpv1uTunnelDataInd, gtpv1uTunnelDataInd)
+MESSAGE_DEF(GTPV1U_TUNNEL_DATA_REQ, Gtpv1uTunnelDataReq, gtpv1uTunnelDataReq)

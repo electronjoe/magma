@@ -269,7 +269,7 @@ inline void nopp(void* x, ...) {
 
 #define NOP(...)                                                               \
   do {                                                                         \
-    nop(__VA_ARGS__);                                                          \
+    int a = 1; \
   } while (0)
 
 #define NOPP(...)                                                              \
