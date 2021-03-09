@@ -61,8 +61,8 @@
 /*******************  L O C A L    D E F I N I T I O N S  *******************/
 /****************************************************************************/
 
-emm_common_data_head_t emm_common_data_head = {PTHREAD_MUTEX_INITIALIZER,
-                                               RB_INITIALIZER()};
+emm_common_data_head_t emm_common_data_head = {
+    PTHREAD_MUTEX_INITIALIZER, RB_INITIALIZER()};
 
 static inline int emm_common_data_compare_ueid(
     struct emm_common_data_s* p1, struct emm_common_data_s* p2);

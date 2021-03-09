@@ -61,12 +61,13 @@ static const char* _emm_detach_type_str[] = {"EPS",
                                              "RESERVED"};
 
 /* String representation of the sgs detach type */
-static const char* _emm_sgs_detach_type_str[] = {"EPS",
-                                                 "UE-INITIATED-EXPLICIT-NONEPS",
-                                                 "COMBINED",
-                                                 "NW-INITIATED-EPS",
-                                                 "NW-INITIATED-IMPLICIT-NONEPS",
-                                                 "RESERVED"};
+static const char* _emm_sgs_detach_type_str[] = {
+    "EPS",
+    "UE-INITIATED-EXPLICIT-NONEPS",
+    "COMBINED",
+    "NW-INITIATED-EPS",
+    "NW-INITIATED-IMPLICIT-NONEPS",
+    "RESERVED"};
 /****************************************************************************
  **                                                                        **
  ** Name:    detach_t3422_handler()                                       **

@@ -108,8 +108,8 @@
 /****************************************************************************/
 
 /* String representation of the EPS attach type */
-static const char* _emm_attach_type_str[] = {"EPS", "IMSI", "EMERGENCY",
-                                             "RESERVED"};
+static const char* _emm_attach_type_str[] = {
+    "EPS", "IMSI", "EMERGENCY", "RESERVED"};
 
 /*
    --------------------------------------------------------------------------
@@ -1694,10 +1694,11 @@ static int _emm_send_attach_accept(emm_context_t* emm_context) {
       if (!IS_EMM_CTXT_PRESENT_GUTI(emm_context)) {
         // Sure it is an unknown GUTI in this MME
         guti_t old_guti = emm_context->_old_guti;
-        guti_t guti     = {.gummei.plmn     = {0},
-                       .gummei.mme_gid  = 0,
-                       .gummei.mme_code = 0,
-                       .m_tmsi          = INVALID_M_TMSI};
+        guti_t guti     = {
+            .gummei.plmn     = {0},
+            .gummei.mme_gid  = 0,
+            .gummei.mme_code = 0,
+            .m_tmsi          = INVALID_M_TMSI};
         clear_guti(&guti);
 
         rc = mme_api_new_guti(

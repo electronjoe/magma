@@ -176,8 +176,8 @@ class StateManager {
         "StateManager init() function should be called to initialize state");
 
     if (persist_state_enabled) {
-      std::vector<std::string> keys = {IMSI_PREFIX + imsi_str + ":" +
-                                       task_name};
+      std::vector<std::string> keys = {
+          IMSI_PREFIX + imsi_str + ":" + task_name};
       if (redis_client->clear_keys(keys) != RETURNok) {
         OAILOG_ERROR(log_task, "Failed to remove UE state from db");
         return;

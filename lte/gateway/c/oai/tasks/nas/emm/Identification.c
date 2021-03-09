@@ -52,8 +52,8 @@ extern int check_plmn_restriction(imsi_t imsi);
 /****************************************************************************/
 
 /* String representation of the requested identity type */
-static const char* _emm_identity_type_str[] = {"NOT AVAILABLE", "IMSI", "IMEI",
-                                               "IMEISV", "TMSI"};
+static const char* _emm_identity_type_str[] = {
+    "NOT AVAILABLE", "IMSI", "IMEI", "IMEISV", "TMSI"};
 
 // callbacks for identification procedure
 static void _identification_t3470_handler(void* args, imsi64_t* imsi64);

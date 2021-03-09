@@ -1602,14 +1602,15 @@ int bMultiCatCstrNeedNULLAsLastArgument(bstring dst, ...) {
 #if defined(_MSC_VER)
 #define _bDeclTbstrIdx(t, n, ...)                                              \
   static unsigned char bGlue3(_btmpuc_, t, n)[] = {__VA_ARGS__, '\0'};         \
-  struct tagbstring t = {-32, sizeof(bGlue3(_btmpuc_, t, n)) - 1,              \
-                         bGlue3(_btmpuc_, t, n)}
+  struct tagbstring t                           = {                            \
+      -32, sizeof(bGlue3(_btmpuc_, t, n)) - 1, bGlue3(_btmpuc_, t, n)}
 #define bDeclTbstr(t, ...) _bDeclTbstrIdx(t, __COUNTER__, __VA_ARGS__)
 #else
-#define bDeclTbstr(t, ...)                                                     \
-  static unsigned char bGlue3(_btmpuc_, t, __LINE__)[] = {__VA_ARGS__, '\0'};  \
-  struct tagbstring t = {-__LINE__, sizeof(bGlue3(_btmpuc_, t, __LINE__)) - 1, \
-                         bGlue3(_btmpuc_, t, __LINE__)}
+#define bDeclTbstr(t, ...)                                                                   \
+  static unsigned char bGlue3(_btmpuc_, t, __LINE__)[] = {__VA_ARGS__, '\0'};                \
+  struct tagbstring t                                  = {                                   \
+      -__LINE__, sizeof(bGlue3(_btmpuc_, t, __LINE__)) - 1, \
+      bGlue3(_btmpuc_, t, __LINE__)}
 #endif
 
 static int test32(void) {

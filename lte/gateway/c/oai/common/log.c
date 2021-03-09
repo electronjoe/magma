@@ -305,7 +305,9 @@ static int handle_message(zloop_t* loop, zsock_t* reader, void* arg) {
       log_exit();
     } break;
 
-    default: { } break; }
+    default: {
+    } break;
+  }
 
   free(received_message_p);
   return 0;

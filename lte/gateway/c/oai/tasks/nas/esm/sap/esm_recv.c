@@ -354,8 +354,8 @@ esm_cause_t esm_recv_pdn_connectivity_request(
         emm_context->esm_ctx.esm_proc_data->request_type, esm_data->apn,
         apn_config->pdn_type, esm_data->pdn_addr, &esm_data->bearer_qos,
         (emm_context->esm_ctx.esm_proc_data->pco.num_protocol_or_container_id) ?
-            &emm_context->esm_ctx.esm_proc_data->pco :
-            NULL,
+                                  &emm_context->esm_ctx.esm_proc_data->pco :
+                                  NULL,
         &esm_cause);
 
     if (rc != RETURNerror) {

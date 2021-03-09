@@ -874,10 +874,11 @@ bstring bYDecode(const_bstring src) {
  *  Change the string into a version that is quotable in SGML (HTML, XML).
  */
 int bSGMLEncode(bstring b) {
-  static struct tagbstring fr[4][2] = {{bsStatic("&"), bsStatic("&amp;")},
-                                       {bsStatic("\""), bsStatic("&quot;")},
-                                       {bsStatic("<"), bsStatic("&lt;")},
-                                       {bsStatic(">"), bsStatic("&gt;")}};
+  static struct tagbstring fr[4][2] = {
+      {bsStatic("&"), bsStatic("&amp;")},
+      {bsStatic("\""), bsStatic("&quot;")},
+      {bsStatic("<"), bsStatic("&lt;")},
+      {bsStatic(">"), bsStatic("&gt;")}};
   int i;
   for (i = 0; i < 4; i++) {
     int ret = bfindreplace(b, &fr[i][0], &fr[i][1], 0);

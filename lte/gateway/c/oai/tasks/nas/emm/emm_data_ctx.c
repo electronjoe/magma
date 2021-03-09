@@ -1258,10 +1258,9 @@ void emm_context_dump(
         indent_spaces, " ",
         (emm_context->_security.sc_type == SECURITY_CTX_TYPE_NOT_AVAILABLE) ?
             "NOT_AVAILABLE" :
-            (emm_context->_security.sc_type ==
-             SECURITY_CTX_TYPE_PARTIAL_NATIVE) ?
+        (emm_context->_security.sc_type == SECURITY_CTX_TYPE_PARTIAL_NATIVE) ?
             "PARTIAL_NATIVE" :
-            (emm_context->_security.sc_type == SECURITY_CTX_TYPE_FULL_NATIVE) ?
+        (emm_context->_security.sc_type == SECURITY_CTX_TYPE_FULL_NATIVE) ?
             "FULL_NATIVE" :
             "MAPPED");
     bformata(

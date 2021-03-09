@@ -561,10 +561,11 @@ imsi64_t mme_app_handle_initial_ue_message(
         "INITIAL UE Message: Valid mme_code %u and S-TMSI %u received from "
         "eNB.\n",
         initial_pP->opt_s_tmsi.mme_code, initial_pP->opt_s_tmsi.m_tmsi);
-    guti_t guti = {.gummei.plmn     = {0},
-                   .gummei.mme_gid  = 0,
-                   .gummei.mme_code = 0,
-                   .m_tmsi          = INVALID_M_TMSI};
+    guti_t guti = {
+        .gummei.plmn     = {0},
+        .gummei.mme_gid  = 0,
+        .gummei.mme_code = 0,
+        .m_tmsi          = INVALID_M_TMSI};
     plmn_t plmn;
     COPY_PLMN(plmn, (initial_pP->tai.plmn));
     is_guti_valid =

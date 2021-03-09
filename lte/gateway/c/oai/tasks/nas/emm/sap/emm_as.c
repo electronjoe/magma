@@ -290,9 +290,10 @@ static int _emm_as_recv(
   nas_message_decode_status_t local_decode_status = {0};
   int decoder_rc                                  = RETURNok;
   int rc                                          = RETURNerror;
-  nas_message_t nas_msg = {.security_protected.header           = {0},
-                           .security_protected.plain.emm.header = {0},
-                           .security_protected.plain.esm.header = {0}};
+  nas_message_t nas_msg                           = {
+      .security_protected.header           = {0},
+      .security_protected.plain.emm.header = {0},
+      .security_protected.plain.esm.header = {0}};
   emm_security_context_t* emm_security_context =
       NULL; /* Current EPS NAS security context     */
 
@@ -739,9 +740,10 @@ static int _emm_as_establish_req(emm_as_establish_t* msg, int* emm_cause) {
 
   OAILOG_INFO(
       LOG_NAS_EMM, "EMMAS-SAP - Received AS connection establish request\n");
-  nas_message_t nas_msg = {.security_protected.header           = {0},
-                           .security_protected.plain.emm.header = {0},
-                           .security_protected.plain.esm.header = {0}};
+  nas_message_t nas_msg = {
+      .security_protected.header           = {0},
+      .security_protected.plain.emm.header = {0},
+      .security_protected.plain.esm.header = {0}};
 
   ue_mm_context_t* ue_mm_context =
       mme_ue_context_exists_mme_ue_s1ap_id(msg->ue_id);
@@ -1337,9 +1339,10 @@ static int _emm_as_data_req(
   int is_encoded = false;
 
   OAILOG_INFO(LOG_NAS_EMM, "EMMAS-SAP - Send AS data transfer request\n");
-  nas_message_t nas_msg = {.security_protected.header           = {0},
-                           .security_protected.plain.emm.header = {0},
-                           .security_protected.plain.esm.header = {0}};
+  nas_message_t nas_msg = {
+      .security_protected.header           = {0},
+      .security_protected.plain.emm.header = {0},
+      .security_protected.plain.esm.header = {0}};
 
   /*
    * Setup the AS message
@@ -1511,9 +1514,10 @@ static int _emm_as_status_ind(
   OAILOG_INFO(
       LOG_NAS_EMM, "EMMAS-SAP - Send AS status indication (cause=%d)\n",
       msg->emm_cause);
-  nas_message_t nas_msg = {.security_protected.header           = {0},
-                           .security_protected.plain.emm.header = {0},
-                           .security_protected.plain.esm.header = {0}};
+  nas_message_t nas_msg = {
+      .security_protected.header           = {0},
+      .security_protected.plain.emm.header = {0},
+      .security_protected.plain.esm.header = {0}};
 
   /*
    * Setup the AS message
@@ -1637,9 +1641,10 @@ static int _emm_as_security_req(
   int size = 0;
 
   OAILOG_INFO(LOG_NAS_EMM, "EMMAS-SAP - Send AS security request\n");
-  nas_message_t nas_msg = {.security_protected.header           = {0},
-                           .security_protected.plain.emm.header = {0},
-                           .security_protected.plain.esm.header = {0}};
+  nas_message_t nas_msg = {
+      .security_protected.header           = {0},
+      .security_protected.plain.emm.header = {0},
+      .security_protected.plain.esm.header = {0}};
 
   /*
    * Setup the AS message
@@ -1750,9 +1755,10 @@ static int _emm_as_security_rej(
   int size = 0;
 
   OAILOG_INFO(LOG_NAS_EMM, "EMMAS-SAP - Send AS security reject\n");
-  nas_message_t nas_msg = {.security_protected.header           = {0},
-                           .security_protected.plain.emm.header = {0},
-                           .security_protected.plain.esm.header = {0}};
+  nas_message_t nas_msg = {
+      .security_protected.header           = {0},
+      .security_protected.plain.emm.header = {0},
+      .security_protected.plain.esm.header = {0}};
 
   /*
    * Setup the AS message
@@ -1839,9 +1845,10 @@ static int _emm_as_erab_setup_req(
   int is_encoded = false;
 
   OAILOG_INFO(LOG_NAS_EMM, "EMMAS-SAP - Send AS data transfer request\n");
-  nas_message_t nas_msg = {.security_protected.header           = {0},
-                           .security_protected.plain.emm.header = {0},
-                           .security_protected.plain.esm.header = {0}};
+  nas_message_t nas_msg = {
+      .security_protected.header           = {0},
+      .security_protected.plain.emm.header = {0},
+      .security_protected.plain.esm.header = {0}};
 
   /*
    * Setup the AS message
@@ -1921,9 +1928,10 @@ static int _emm_as_erab_rel_cmd(
   int is_encoded = false;
 
   OAILOG_INFO(LOG_NAS_EMM, "EMMAS-SAP - Send AS data transfer request\n");
-  nas_message_t nas_msg = {.security_protected.header           = {0},
-                           .security_protected.plain.emm.header = {0},
-                           .security_protected.plain.esm.header = {0}};
+  nas_message_t nas_msg = {
+      .security_protected.header           = {0},
+      .security_protected.plain.emm.header = {0},
+      .security_protected.plain.esm.header = {0}};
 
   /*
    * Setup the AS message
@@ -2019,9 +2027,10 @@ static int _emm_as_establish_cnf(
       "EMMAS-SAP - Send AS connection establish confirmation for (ue_id = "
       "%d)\n",
       msg->ue_id);
-  nas_message_t nas_msg = {.security_protected.header           = {0},
-                           .security_protected.plain.emm.header = {0},
-                           .security_protected.plain.esm.header = {0}};
+  nas_message_t nas_msg = {
+      .security_protected.header           = {0},
+      .security_protected.plain.emm.header = {0},
+      .security_protected.plain.esm.header = {0}};
   /*
    * Setup the AS message
    */
@@ -2153,9 +2162,10 @@ static int _emm_as_establish_rej(
     const emm_as_establish_t* msg, nas_establish_rsp_t* as_msg) {
   EMM_msg* emm_msg      = NULL;
   int size              = 0;
-  nas_message_t nas_msg = {.security_protected.header           = {0},
-                           .security_protected.plain.emm.header = {0},
-                           .security_protected.plain.esm.header = {0}};
+  nas_message_t nas_msg = {
+      .security_protected.header           = {0},
+      .security_protected.plain.emm.header = {0},
+      .security_protected.plain.esm.header = {0}};
 
   OAILOG_FUNC_IN(LOG_NAS_EMM);
   OAILOG_INFO(LOG_NAS_EMM, "EMMAS-SAP - Send AS connection establish reject\n");
