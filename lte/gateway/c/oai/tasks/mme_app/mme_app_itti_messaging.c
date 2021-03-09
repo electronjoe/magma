@@ -412,7 +412,6 @@ void nas_itti_sgsap_uplink_unitdata(
     tai_t* tai_pP, ecgi_t* ecgi_pP, bool sms_orc8r_enabled) {
   OAILOG_FUNC_IN(LOG_MME_APP);
   MessageDef* message_p = NULL;
-  int uetimezone        = 0;
 
   message_p = itti_alloc_new_message(TASK_MME_APP, SGSAP_UPLINK_UNITDATA);
   if (message_p == NULL) {
@@ -432,7 +431,9 @@ void nas_itti_sgsap_uplink_unitdata(
    * optional - UE Time Zone
    * update the ue time zone presence bitmask
    */
-  if ((uetimezone = get_time_zone()) != RETURNerror) {
+  // TODO: It appears we do not actually use UE timezone, but instead MME
+  // timezone (GH #5387).
+  if (get_time_zone() != RETURNerror) {
     SGSAP_UPLINK_UNITDATA(message_p).opt_ue_time_zone = timezone;
     SGSAP_UPLINK_UNITDATA(message_p).presencemask =
         UPLINK_UNITDATA_UE_TIMEZONE_PARAMETER_PRESENT;

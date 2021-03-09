@@ -650,13 +650,12 @@ int encode_mobileid_imsi_tmsi(
 //------------------------------------------------------------------------------
 int nas_proc_cs_domain_location_updt_fail(
     SgsRejectCause_t cause, lai_t* lai, mme_ue_s1ap_id_t mme_ue_s1ap_id) {
-  int rc                                                      = RETURNerror;
-  emm_sap_t emm_sap                                           = {0};
-  emm_cn_cs_domain_location_updt_fail_t cs_location_updt_fail = {0};
+  int rc            = RETURNerror;
+  emm_sap_t emm_sap = {0};
 
   OAILOG_FUNC_IN(LOG_NAS_EMM);
   emm_sap.primitive = EMMCN_CS_DOMAIN_LOCATION_UPDT_FAIL;
-  cs_location_updt_fail =
+  emm_cn_cs_domain_location_updt_fail_t cs_location_updt_fail =
       emm_sap.u.emm_cn.u.emm_cn_cs_domain_location_updt_fail;
 
   cs_location_updt_fail.ue_id = mme_ue_s1ap_id;

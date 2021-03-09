@@ -38,15 +38,15 @@ int decode_attach_request(
   /*
    * Decoding mandatory fields
    */
-  if ((decoded_result = decode_u8_eps_attach_type(
-           &attach_request->epsattachtype, 0, *(buffer + decoded) & 0x0f,
-           len - decoded)) < 0) {
+  if ((decode_u8_eps_attach_type(
+          &attach_request->epsattachtype, 0, *(buffer + decoded) & 0x0f,
+          len - decoded)) < 0) {
     OAILOG_FUNC_RETURN(LOG_NAS_EMM, TLV_VALUE_DOESNT_MATCH);
   }
 
-  if ((decoded_result = decode_u8_nas_key_set_identifier(
-           &attach_request->naskeysetidentifier, 0, *(buffer + decoded) >> 4,
-           len - decoded)) < 0) {
+  if (decode_u8_nas_key_set_identifier(
+          &attach_request->naskeysetidentifier, 0, *(buffer + decoded) >> 4,
+          len - decoded) < 0) {
     OAILOG_FUNC_RETURN(LOG_NAS_EMM, TLV_VALUE_DOESNT_MATCH);
   }
 

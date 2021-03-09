@@ -271,7 +271,6 @@ void mme_app_handle_conn_est_cnf(
     nas_establish_rsp_t* const nas_conn_est_cnf_p) {
   OAILOG_FUNC_IN(LOG_MME_APP);
   struct ue_mm_context_s* ue_context_p                             = NULL;
-  emm_context_t emm_context                                        = {0};
   MessageDef* message_p                                            = NULL;
   itti_mme_app_connection_establishment_cnf_t* establishment_cnf_p = NULL;
   int rc                                                           = RETURNok;
@@ -292,7 +291,7 @@ void mme_app_handle_conn_est_cnf(
     bdestroy_wrapper(&nas_conn_est_cnf_p->nas_msg);
     OAILOG_FUNC_OUT(LOG_MME_APP);
   }
-  emm_context = ue_context_p->emm_context;
+  emm_context_t emm_context = ue_context_p->emm_context;
   /* Check that if Service Request is recieved in response to SGS Paging for MT
    * SMS */
   if (ue_context_p->sgs_context) {

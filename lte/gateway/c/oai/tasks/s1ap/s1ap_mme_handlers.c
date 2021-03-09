@@ -1458,7 +1458,6 @@ int s1ap_mme_handle_ue_context_release_complete(
     S1ap_S1AP_PDU_t* pdu) {
   S1ap_UEContextReleaseComplete_t* container;
   S1ap_UEContextReleaseComplete_IEs_t* ie = NULL;
-  ue_description_t* ue_ref_p              = NULL;
   mme_ue_s1ap_id_t mme_ue_s1ap_id         = 0;
 
   OAILOG_FUNC_IN(LOG_S1AP);
@@ -1475,7 +1474,7 @@ int s1ap_mme_handle_ue_context_release_complete(
     OAILOG_FUNC_RETURN(LOG_S1AP, RETURNok);
   }
 
-  if ((ue_ref_p = s1ap_state_get_ue_mmeid(mme_ue_s1ap_id)) == NULL) {
+  if (s1ap_state_get_ue_mmeid(mme_ue_s1ap_id) == NULL) {
     /*
      * The UE context has already been deleted when the UE context release
      * command was sent
@@ -1800,7 +1799,6 @@ int s1ap_mme_handle_ue_context_modification_failure(
       if (!ie) {
         OAILOG_FUNC_RETURN(LOG_S1AP, RETURNerror);
       }
-      cause_value = ie->value.choice.Cause.choice.radioNetwork;
       switch (cause_type) {
         case S1ap_Cause_PR_radioNetwork:
           cause_value = ie->value.choice.Cause.choice.radioNetwork;
@@ -2847,8 +2845,8 @@ int s1ap_mme_handle_enb_reset(
           if (s1_sig_conn_id_p->eNB_UE_S1AP_ID != NULL) {
             enb_ue_s1ap_id =
                 (enb_ue_s1ap_id_t) * (s1_sig_conn_id_p->eNB_UE_S1AP_ID);
-            if ((ue_ref_p = s1ap_state_get_ue_enbid(
-                     enb_association->sctp_assoc_id, enb_ue_s1ap_id)) != NULL) {
+            if (s1ap_state_get_ue_enbid(
+                    enb_association->sctp_assoc_id, enb_ue_s1ap_id) != NULL) {
               enb_ue_s1ap_id &= ENB_UE_S1AP_ID_MASK;
               reset_req->ue_to_reset_list[i].enb_ue_s1ap_id = enb_ue_s1ap_id;
             } else {
@@ -2979,7 +2977,6 @@ int s1ap_handle_paging_request(
   uint8_t num_of_tac      = 0;
   uint16_t tai_list_count = paging_request->tai_list_count;
 
-  bool is_tai_found    = false;
   uint32_t idx         = 0;
   uint8_t* buffer_p    = NULL;
   uint32_t length      = 0;
@@ -3108,8 +3105,8 @@ int s1ap_handle_paging_request(
     if (enb_ref_p->s1_state == S1AP_READY) {
       supported_ta_list_t* enb_ta_list = &enb_ref_p->supported_ta_list;
 
-      if ((is_tai_found = s1ap_paging_compare_ta_lists(
-               enb_ta_list, p_tai_list, paging_request->tai_list_count))) {
+      if (s1ap_paging_compare_ta_lists(
+              enb_ta_list, p_tai_list, paging_request->tai_list_count)) {
         bstring paging_msg_buffer = blk2bstr(buffer_p, length);
         rc                        = s1ap_mme_itti_send_sctp_request(
             &paging_msg_buffer, enb_ref_p->sctp_assoc_id,
@@ -3415,8 +3412,7 @@ int s1ap_handle_path_switch_req_failure(
       S1ap_PathSwitchRequestFailureIEs_t, ie, container,
       S1ap_ProtocolIE_ID_id_MME_UE_S1AP_ID, true);
   mme_ue_s1ap_id = ie->value.choice.MME_UE_S1AP_ID;
-  if ((ie) &&
-      (ue_ref_p = s1ap_state_get_ue_mmeid((uint32_t) mme_ue_s1ap_id)) == NULL) {
+  if ((ie) && (s1ap_state_get_ue_mmeid((uint32_t) mme_ue_s1ap_id) == NULL)) {
     OAILOG_DEBUG_UE(
         LOG_S1AP, imsi64,
         "could not get ue context for mme_ue_s1ap_id " MME_UE_S1AP_ID_FMT "\n",

@@ -606,7 +606,6 @@ int emm_proc_authentication_failure(
         LOG_NAS_EMM,
         "EMM-PROC  - Failed to authenticate the UE " MME_UE_S1AP_ID_FMT "\n",
         ue_id);
-    emm_cause = EMM_CAUSE_ILLEGAL_UE;
     OAILOG_FUNC_RETURN(LOG_NAS_EMM, rc);
   }
 
