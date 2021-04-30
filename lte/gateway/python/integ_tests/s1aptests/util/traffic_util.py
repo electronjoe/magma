@@ -15,6 +15,7 @@ import copy
 import ctypes
 import ipaddress
 import iperf3
+import logging
 import os
 import pyroute2
 import socket
@@ -382,8 +383,12 @@ class TrafficTest(object):
             test_ids = copy.deepcopy(self._test_ids)
 
         try:
-            # Set up sockets and associated streams
-            sc = socket.create_connection(self._remote_server)
+            try:
+                # Set up sockets and associated streams
+                sc = socket.create_connection(self._remote_server)
+            except OSError:
+                print("ERROR: OSError - Unable to connect to traffic server, have you spun up a magma_trfserver?")
+
             sc_in = sc.makefile('rb')
             sc_out = sc.makefile('wb')
 
